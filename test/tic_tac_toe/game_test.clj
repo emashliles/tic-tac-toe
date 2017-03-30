@@ -12,4 +12,6 @@
 
 (deftest prints-and-formats (is (= "123\n456\n789\n" (with-out-str (print-and-format (create-board))))))
 
-(deftest make-multiple-human-moves (is (= "1X3\n456\n789\n1XO\n456\n789\n" (with-out-str (with-in-str "2\n3" (game-loop (create-board)))))))
+;(deftest make-multiple-human-moves (is (= "1X3\n456\n789\n1XO\n456\n789\n" (with-out-str (with-in-str "2\n3" (game-loop (create-board) "X"))))))
+
+(deftest switch-O-to-X (is (= "X" (switch-marker "O"))))

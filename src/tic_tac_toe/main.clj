@@ -2,4 +2,4 @@
 (:require [tic-tac-toe.game :refer :all]
           [tic-tac-toe.board :refer :all]))
 
-(defn -main [] (game-loop (create-board)) )
+(defn -main [] (game-loop (create-board) "X" ) )
