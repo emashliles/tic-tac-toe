@@ -1,5 +1,5 @@
 (ns tic-tac-toe.main(:gen-class)
-(:require [tic-tac-toe.board :refer :all] 
-          [tic-tac-toe.board-printing :refer :all]) )
+(:require [tic-tac-toe.game :refer :all]
+          [tic-tac-toe.board :refer :all]))
 
-(defn -main [] (print-board (format-board (create-board))))
+(defn -main [] (game-loop (create-board) "X" ) )
