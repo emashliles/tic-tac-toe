@@ -5,7 +5,7 @@
               (if (= v "")
               (str (+ 1 (read-string (name k))))
               (str v)
-) )  board))
+) ) board))
 
 (defn print-board [formatted-board](println formatted-board))
 
