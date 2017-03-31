@@ -2,15 +2,19 @@
 
 (defn row-is-win?
 [source-row]
-(let [row (into #{} source-row)] 
-      (cond (contains? row "") false
-            (= 1 (count row)) true)))
+(let [row (into #{} source-row)]
+(cond (contains? row  "") false
+      (= 1 (count row)) true
+:else false)))
 
 (defn get-row-sets [rows]
 (some row-is-win? rows))
 
 (defn winning-row? [board]
-(partition 3 (vals board))
+(partition 3 (vals board)))
+
+(defn winning-column? [board]
+(winning-row? (select-keys board [:0 :3 :6 :1 :4 :7 :2 :5 :8]) )
 )
 
 (defn is-tie? [board]
@@ -19,12 +23,8 @@
 true
 )))
 
-;(defn is-tie? [board]
-;(if (= 2 (count (set (vals board))))
-;true
-;false))
-
 (defn is-win? [board]
-(winning-row? board))
+ (or (get-row-sets (winning-row? board)) (get-row-sets (winning-column? board)) )
+)
 
 
