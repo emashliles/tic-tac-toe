@@ -1,7 +1,8 @@
 (ns tic-tac-toe.game
 (:require [tic-tac-toe.board :refer :all] 
           [tic-tac-toe.board-printing :refer :all]
-          [tic-tac-toe.human-ui :refer :all] ))
+          [tic-tac-toe.human-ui :refer :all]
+          [tic-tac-toe.board-evaluation :refer :all]))
 
 (defn switch-marker [marker] (if (= marker "X")"O""X" ))
 
@@ -18,6 +19,13 @@
 (print-and-format (place-human-marker board marker))
 )
 
+
 (defn game-loop [board marker]
-(game-loop (human-turn board marker) (switch-marker marker) )
-)
+(let [marked-board (human-turn board marker)]
+(cond (is-tie? marked-board) (println "Game Over.")
+      :else (game-loop marked-board (switch-marker marker) )
+)))
+
+;(defn game-loop [board marker]
+;(game-loop (human-turn board marker) (switch-marker marker) )
+;)

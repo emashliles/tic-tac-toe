@@ -12,6 +12,8 @@
 
 (deftest prints-and-formats (is (= "123\n456\n789\n" (with-out-str (print-and-format (create-board))))))
 
-;(deftest make-multiple-human-moves (is (= "1X3\n456\n789\n1XO\n456\n789\n" (with-out-str (with-in-str "2\n3" (game-loop (create-board) "X"))))))
+(deftest end-game-at-tie (is (= "XOX\nXOX\nOXO\nGame Over.\n" (with-out-str (with-in-str "8" (game-loop  (sorted-map :0 "X", :1 "O", :2 "X", :3 "X", :4 "O", :5 "X", :6 "O", :7 "", :8 "O") "X"))))))
+
+;(deftest make-multiple-human-moves (is (= "1X3\n456\n789\n1XO\n456\n789\n" (with-out-str (with-in-str "2\n3\n" (game-loop (create-board) "X"))))))
 
 (deftest switch-O-to-X (is (= "X" (switch-marker "O"))))

@@ -14,9 +14,15 @@
 )
 
 (defn is-tie? [board]
-(if (= 2 (count (set (vals board))))
+(let [marker-set (set (vals board)) ]
+(if (contains? marker-set "") false
 true
-false))
+)))
+
+;(defn is-tie? [board]
+;(if (= 2 (count (set (vals board))))
+;true
+;false))
 
 (defn is-win? [board]
 (winning-row? board))
