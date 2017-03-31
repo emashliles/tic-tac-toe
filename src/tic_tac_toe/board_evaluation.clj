@@ -1,14 +1,13 @@
 (ns tic-tac-toe.board-evaluation)
 
 (defn row-is-win?
-[row]
-(= 1  (count  (into #{} row)))
-)
+[source-row]
+(let [row (into #{} source-row)] 
+      (cond (contains? row "") false
+            (= 1 (count row)) true)))
 
 (defn get-row-sets [rows]
-(some row-is-win? rows)
-
-)
+(some row-is-win? rows))
 
 (defn winning-row? [board]
 (partition 3 (vals board))
@@ -20,9 +19,6 @@ true
 false))
 
 (defn is-win? [board]
-(if (winning-row? board)
-true
-false
-))
+(winning-row? board))
 
 
