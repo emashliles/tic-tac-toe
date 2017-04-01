@@ -14,7 +14,7 @@
 (deftest identifies-winning-row (is (is-win? 
   (sorted-map :0 "O", :1 "X", :2 "O", :3 "X", :4 "O", :5 "X", :6 "O", :7 "O", :8 "O"))))
 
-(deftest identifies-empty-row (is not(is-win? 
+(deftest identifies-empty-row (is not (is-win? 
   (sorted-map :0 "", :1 "", :2 "", :3 "", :4 "", :5 "", :6 "", :7 "", :8 ""))))
 
 (deftest detects-win-row (is winning-row? 
