@@ -22,10 +22,7 @@
 
 (defn game-loop [board marker]
 (let [marked-board (human-turn board marker)]
-(cond (is-tie? marked-board) (println "Game Over.")
+(cond (or (is-tie? marked-board) (is-win? marked-board)) (println "Game Over.")
       :else (game-loop marked-board (switch-marker marker) )
 )))
 
-;(defn game-loop [board marker]
-;(game-loop (human-turn board marker) (switch-marker marker) )
-;)
