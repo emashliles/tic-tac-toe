@@ -19,3 +19,5 @@
 
 (deftest switch-O-to-X (is (= "X" (switch-marker "O"))))
 
+(deftest space-already-selected-is-invalid (is 
+  (= "Space already selected.\nXOX\nXOX\nOXO\nGame Over.\n" (with-out-str (with-in-str "7\n8\n" (game-loop  (sorted-map :0 "X", :1 "O", :2 "X", :3 "X", :4 "O", :5 "X", :6 "O", :7 "", :8 "O") "X"))))))

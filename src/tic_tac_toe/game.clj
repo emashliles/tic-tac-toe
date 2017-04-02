@@ -4,6 +4,8 @@
           [tic-tac-toe.human-ui :refer :all]
           [tic-tac-toe.board-evaluation :refer :all]))
 
+(declare place-human-marker)
+
 (defn switch-marker [marker] 
   (if (= marker "X")
    "O"
@@ -16,8 +18,14 @@
 (defn print-and-format [board]
   (print-board (format-board board)) board)
 
+(defn space-already-selected [board marker]
+  (println "Space already selected.")
+  (place-human-marker board marker))
+
 (defn place-human-marker [board marker]
-  (place-marker (keyword (get-human-selection))  marker board ))
+(let [selection (keyword (get-human-selection))]
+   (cond (= "O" (get board selection)) (space-already-selected board marker)
+         :else (place-marker selection  marker board ))))
 
 (defn human-turn [board marker]
   (print-and-format (place-human-marker board marker)))
