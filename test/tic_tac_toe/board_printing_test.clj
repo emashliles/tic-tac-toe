@@ -4,11 +4,11 @@
 [tic-tac-toe.board :refer :all]))
 
 (deftest format-board-for-printing
-  (is (= "123\n456\n789" (format-board (create-board)))))
+  (is (= "| 1 || 2 || 3 |\n---------------\n| 4 || 5 || 6 |\n---------------\n| 7 || 8 || 9 |" (format-board (create-board)))))
 
 (deftest print-board-to-out
-  (is (= "123\n456\n789\n" (with-out-str (print-board (format-board (create-board)))))))
+  (is (= "\u001b[2J\u001B[0;0f| 1 || 2 || 3 |\n---------------\n| 4 || 5 || 6 |\n---------------\n| 7 || 8 || 9 |\n" (with-out-str (print-board (format-board (create-board)))))))
 
 (deftest print-board-with-markers
-  (is (="12X\n456\n789\n" (with-out-str (print-board (format-board (place-marker :2 "X" (create-board))))))))
+  (is (="\u001b[2J\u001B[0;0f| 1 || 2 || X |\n---------------\n| 4 || 5 || 6 |\n---------------\n| 7 || 8 || 9 |\n" (with-out-str (print-board (format-board (place-marker :2 "X" (create-board))))))))
 
