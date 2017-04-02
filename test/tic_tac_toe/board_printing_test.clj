@@ -7,8 +7,8 @@
   (is (= "123\n456\n789" (format-board (create-board)))))
 
 (deftest print-board-to-out
-  (is (= "123\n456\n789\n" (with-out-str (print-board (format-board (create-board)))))))
+  (is (= "\u001b[2J\u001B[0;0f123\n456\n789\n" (with-out-str (print-board (format-board (create-board)))))))
 
 (deftest print-board-with-markers
-  (is (="12X\n456\n789\n" (with-out-str (print-board (format-board (place-marker :2 "X" (create-board))))))))
+  (is (="\u001b[2J\u001B[0;0f12X\n456\n789\n" (with-out-str (print-board (format-board (place-marker :2 "X" (create-board))))))))
 
