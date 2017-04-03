@@ -11,7 +11,7 @@
 
 (deftest block-opponent-winning-l-r-diagonal (is (= 8 (minimax (sorted-map :0 "X", :1 "O", :2 "O", :3 "", :4 "X", :5 "", :6 "", :7 "", :8 "") "O"))))
 
-(deftest block-opponent-winning-r-l-diagonal (is (= 6 (minimax (sorted-map :0 "X", :1 "O", :2 "X", :3 "", :4 "X", :5 "", :6 "", :7 "", :8 "X") "O"))))
+(deftest block-opponent-winning-r-l-diagonal (is (= 6 (minimax (sorted-map :0 "", :1 "O", :2 "X", :3 "", :4 "X", :5 "", :6 "", :7 "", :8 "") "O"))))
 
 (deftest create-two-potential-winning-moves (is (= 0 (minimax (sorted-map :0 "", :1 "", :2 "", :3 "", :4 "X", :5 "", :6 "", :7 "", :8 "") "O"))))
 
