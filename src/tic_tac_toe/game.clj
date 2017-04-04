@@ -2,7 +2,9 @@
 (:require [tic-tac-toe.board :refer :all] 
           [tic-tac-toe.board-printing :refer :all]
           [tic-tac-toe.human-ui :refer :all]
-          [tic-tac-toe.board-evaluation :refer :all]))
+          [tic-tac-toe.board-evaluation :refer :all]
+          [tic-tac-toe.minimax :refer :all]
+))
 
 (declare place-human-marker)
 
@@ -34,4 +36,9 @@
   (let [marked-board (human-turn board marker)]
    (cond (or (is-tie? marked-board) (is-win? marked-board)) (println "Game Over.")
          :else (game-loop marked-board (switch-marker marker)))))
+
+(defn game-loop-h-c [board marker]
+  (let [marked-board (human-turn board marker)]
+   (cond (or (is-tie? marked-board) (is-win? marked-board)) (println "Game Over.")
+         :else (game-loop-h-c (place-marker (minimax marked-board "O" )"O" marked-board) marker))))
 
