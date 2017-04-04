@@ -23,3 +23,11 @@
 
 (deftest space-already-selected-is-invalid (is 
   (= "Space already selected.\n\u001b[2J\u001B[0;0f| X || O || X |\n---------------\n| X || O || X |\n---------------\n| O || X || O |\nGame Over.\n" (with-out-str (with-in-str "7\n8\n" (game-loop  (sorted-map :0 "X", :1 "O", :2 "X", :3 "X", :4 "O", :5 "X", :6 "O", :7 "", :8 "O") "X"))))))
+
+(deftest make-computer-move (is 
+  (= "\u001b[2J\u001B[0;0f| O || 2 || 3 |\n---------------\n| 4 || 5 || 6 |\n---------------\n| 7 || 8 || 9 |\n" (with-out-str  (computer-turn (create-board) "O" )))) )
+
+(deftest end-human-computer-game-at-tie (is 
+  (= "\u001b[2J\u001B[0;0f| X || 2 || X |\n---------------\n| X || O || X |\n---------------\n| O || X || O |\n\u001b[2J\u001B[0;0f| X || O || X |\n---------------\n| X || O || X |\n---------------\n| O || X || O |\nGame Over - Tie.\n"(with-out-str (with-in-str "8" (game-loop-human-computer  (sorted-map :0 "X", :1 "", :2 "X", :3 "X", :4 "O", :5 "X", :6 "O", :7 "", :8 "O") "X"))))))
+
+(deftest computer-move-returns-board (is (=  {:0 "O", :1 "", :2 "", :3 "", :4 "", :5 "", :6 "", :7 "", :8 ""} (computer-turn (create-board) "O" ) )))

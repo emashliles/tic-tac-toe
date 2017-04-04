@@ -3,8 +3,7 @@
           [tic-tac-toe.board-printing :refer :all]
           [tic-tac-toe.human-ui :refer :all]
           [tic-tac-toe.board-evaluation :refer :all]
-          [tic-tac-toe.minimax :refer :all]
-))
+          [tic-tac-toe.minimax :refer :all]))
 
 (declare place-human-marker)
 
@@ -15,10 +14,12 @@
 
 (defn start [] 
   (let [board (create-board)] 
-   (print-board (format-board board)) board))
+   (print-board (format-board board)) 
+   board))
 
 (defn print-and-format [board]
-  (print-board (format-board board)) board)
+  (print-board (format-board board)) 
+   board)
 
 (defn space-already-selected [board marker]
   (println "Space already selected.")
@@ -32,13 +33,22 @@
 (defn human-turn [board marker]
   (print-and-format (place-human-marker board marker)))
 
+(defn computer-turn [board marker]
+  (print-and-format (place-marker (minimax board marker ) marker board ))
+)
+
 (defn game-loop [board marker]
   (let [marked-board (human-turn board marker)]
    (cond (or (is-tie? marked-board) (is-win? marked-board)) (println "Game Over.")
          :else (game-loop marked-board (switch-marker marker)))))
 
-(defn game-loop-h-c [board marker]
-  (let [marked-board (human-turn board marker)]
-   (cond (or (is-tie? marked-board) (is-win? marked-board)) (println "Game Over.")
-         :else (game-loop-h-c (place-marker (minimax marked-board "O" )"O" marked-board) marker))))
-
+(defn game-loop-human-computer [board marker]
+  (cond  (is-tie? board) (println "Game Over - Tie.")
+         (is-win? board) (println "Game Over - Computer Wins.")
+         :else
+  (let [marked-board (human-turn board "X")]
+   (cond (is-win? marked-board) (println "Game Over - Huamn Wins.")
+         (is-tie? marked-board) (println "Game Over - Tie.")
+         :else (do  (game-loop-human-computer (computer-turn marked-board "O") "O" ))
+)) )
+  )
