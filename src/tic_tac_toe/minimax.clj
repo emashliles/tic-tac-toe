@@ -8,8 +8,8 @@
    "X" ))
 
 (defn best-score [scores player max-player min-player]
-(cond (= player max-player) (do (into  {}  (into {} (max scores))))
-      (= player min-player) (do (into  {}  (into {} (min scores))))))
+(cond (= player max-player) (do (into  {} (max scores)))
+      (= player min-player) (do (into  {} (min scores)))))
 
 (defn minimax-body [board current-player move max-player min-player depth]
   (let [score (calculate-score current-player board depth max-player min-player) ]
@@ -17,7 +17,8 @@
          (nil? score) 
          (do (let [next-player (switch-marker-mm current-player)]
              (let [moves (available-spaces board)]
-                 (do (best-score  (map #(minimax-body (place-marker % next-player board) next-player % max-player min-player  (+ depth 1)) moves) next-player max-player min-player  ) ) ))))))
+             (let [modified-depth (+ depth 1)]
+              (do (best-score  (map #(minimax-body (place-marker % next-player board) next-player % max-player min-player modified-depth ) moves) next-player max-player min-player )))))))))
 
 (defn minimax [board current-player]
   (let [moves (available-spaces board)]
