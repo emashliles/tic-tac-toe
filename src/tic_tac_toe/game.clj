@@ -50,5 +50,4 @@
    (cond (is-win? marked-board) (println "Game Over - Huamn Wins.")
          (is-tie? marked-board) (println "Game Over - Tie.")
          :else (do  (game-loop-human-computer (computer-turn marked-board "O") "O" ))
-)) )
-  )
+))))
