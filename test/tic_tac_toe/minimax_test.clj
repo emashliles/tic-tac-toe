@@ -7,7 +7,7 @@
 
 (deftest take-winning-move (is (= :6 (minimax (sorted-map :0 "O", :1 "X", :2 "O", :3 "X", :4 "O", :5 "X", :6 "", :7 "", :8 "") "O"))))
 
-(deftest block-opponent-winning (is (= :2 (minimax (sorted-map :0 "X", :1 "X", :2 "", :3 "", :4 "O", :5 "", :6 "", :7 "O", :8 "") "O"))))
+(deftest block-opponent-winning (is (= :2 (minimax (sorted-map :0 "", :1 "", :2 "", :3 "", :4 "O", :5 "X", :6 "O", :7 "", :8 "X") "O"))))
 
 (deftest block-opponent-winning-l-r-diagonal (is (= :8 (minimax (sorted-map :0 "X", :1 "O", :2 "O", :3 "", :4 "X", :5 "", :6 "", :7 "", :8 "") "O"))))
 
