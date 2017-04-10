@@ -18,7 +18,7 @@
          (do (let [next-player (switch-marker-mm current-player)]
              (let [moves (available-spaces board)]
              (let [modified-depth (+ depth 1)]
-              (do (best-score  (map #(minimax-body (place-marker % next-player board) next-player % max-player min-player modified-depth ) moves) next-player max-player min-player )))))))))
+             (best-score  (map #(minimax-body (place-marker % next-player board) next-player % max-player min-player modified-depth ) moves) next-player max-player min-player ) )))))))
 
 (defn minimax [board current-player]
   (let [moves (available-spaces board)]
