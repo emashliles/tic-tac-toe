@@ -4,7 +4,7 @@
 
 (deftest make-only-available-move (is (= :7 (minimax (sorted-map :0 "O", :1 "X", :2 "O", :3 "X", :4 "O", :5 "X", :6 "X", :7 "", :8 "X") "O"))))
 
-(deftest take-winning-move (is (= :6 (minimax (sorted-map :0 "O", :1 "X", :2 "O", :3 "X", :4 "O", :5 "X", :6 "", :7 "", :8 "") "O"))))
+(deftest take-winning-move (is (= :8 (minimax (sorted-map :0 "O", :1 "X", :2 "O", :3 "X", :4 "O", :5 "X", :6 "", :7 "", :8 "") "O"))))
 
 (deftest block-opponent-winning (is (= :2 (minimax (sorted-map :0 "", :1 "", :2 "", :3 "", :4 "", :5 "X", :6 "O", :7 "", :8 "X") "O"))))
 
@@ -14,4 +14,5 @@
 
 (deftest create-two-potential-winning-moves (is (= :8 (minimax (sorted-map :0 "", :1 "", :2 "", :3 "", :4 "X", :5 "", :6 "", :7 "", :8 "") "O"))))
 
-(deftest select-corner-at-start (is (= :0 (minimax (sorted-map :0 "", :1 "", :2 "", :3 "", :4 "", :5 "", :6 "", :7 "", :8 "") "O"))))
+(deftest select-corner-at-start (is (= :8 (minimax (sorted-map :0 "", :1 "", :2 "", :3 "", :4 "", :5 "", :6 "", :7 "", :8 "") "O"))))
+
