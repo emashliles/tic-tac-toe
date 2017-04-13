@@ -6,3 +6,6 @@
 (defn place-marker [space marker board]
   (assoc board space marker))
 
+(defn available-spaces [board]
+ (map first (filter (comp #{ "" } last )board ))
+)
