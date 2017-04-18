@@ -1,4 +1,4 @@
-# Tic Tac Toe
+# Tic Tac Toe [![Build Status](https://travis-ci.org/emashliles/tic-tac-toe.svg?branch=master)](https://travis-ci.org/emashliles/tic-tac-toe)
 
 Tic Tac Toe in Clojure.
 
@@ -6,5 +6,27 @@ Tic Tac Toe in Clojure.
 
 + Java
 + Leinigen
+
+## Test
+
+To run the tests once:
+
+```
+lein test
+```
+
+To run the tests continuously:
+
+```
+lein auto test
+```
+
+## Run
+
+To run the game:
+
+```
+lein run
+```
 
 
