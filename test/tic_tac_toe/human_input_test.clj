@@ -10,9 +10,3 @@
 
 (deftest advice-text-for-invalid-input (is (= "Invalid selection. Please enter a number between 1 and 9\n" (with-out-str (with-in-str "invalid\n1\n" (get-human-selection))))))
 
-(deftest finds-valid-selection (is (is-valid? "1" )))
-
-(deftest finds-invalid--string-selection (is not(is-valid? "invalid")))
-
-(deftest finds-invalid-negative-selection (is not(is-valid? "-1")))
-
