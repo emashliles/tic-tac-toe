@@ -2,6 +2,8 @@
 
 (defn clear-screen []  "\u001b[2J\u001B[0;0f")
 (defn line-separator [] "\n---------------\n")
+(defn first-separator-index [] 15)
+(defn second-separator-index [] 47)
 
 (defn create-space-numbers-from-keywords [board]
   (map  (fn  [[k v]] 
@@ -13,9 +15,12 @@
   (print (clear-screen))
   (println formatted-board))
 
-(defn add-newlines [source insert index]
+(defn insert-separator [source insert index]
   (str (subs source 0 index) insert (subs source index)))
 
+(defn add-separators [board] 
+ (insert-separator (insert-separator board (line-separator) (first-separator-index)) (line-separator) (second-separator-index)))
+
 (defn format-board [board]
-  (add-newlines (add-newlines (apply str (create-space-numbers-from-keywords board)) (line-separator) 15) (line-separator) 47))
+  (add-separators (apply str (create-space-numbers-from-keywords board))))
 

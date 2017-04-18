@@ -28,8 +28,8 @@
    (cond (= "O" (get board selection)) (space-already-selected board marker)
          :else (place-marker selection  marker board ))))
 
-(defn computer-turn  [board marker]
-  (print-and-format  (place-marker  (minimax board marker ) marker board )))
+(defn computer-turn [board marker]
+  (print-and-format (place-marker  (minimax board marker ) marker board )))
 
 (defn human-turn [board marker]
   (print-and-format (place-human-marker board marker)))
@@ -40,10 +40,10 @@
          :else (game-loop marked-board (switch-marker marker)))))
 
 (defn game-loop-human-computer  [board marker]
-  (cond  (is-tie? board)  (println "Game Over - Tie.")
-         (is-win? board)  (println "Game Over - Computer Wins.")
+  (cond  (is-tie? board) (println "Game Over - Tie.")
+         (is-win? board) (println "Game Over - Computer Wins.")
          :else
   (let  [marked-board  (human-turn board "X")]
-   (cond (is-win? marked-board)  (println "Game Over - Huamn Wins.")
-         (is-tie? marked-board)  (println "Game Over - Tie.")
-         :else  (do  (game-loop-human-computer  (computer-turn marked-board "O") "O" ))))))
+   (cond (is-win? marked-board) (println "Game Over - Huamn Wins.")
+         (is-tie? marked-board) (println "Game Over - Tie.")
+         :else  (do (game-loop-human-computer (computer-turn marked-board "O") "O" ))))))

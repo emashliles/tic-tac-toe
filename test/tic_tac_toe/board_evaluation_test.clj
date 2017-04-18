@@ -32,5 +32,3 @@
 (deftest identifies-winning-r-l-diagnonal (is (is-win? 
   (sorted-map :0 "", :1 "", :2 "X", :3 "", :4 "X", :5 "", :6 "X", :7 "", :8 ""))))
 
-(deftest identifies-diagonal (is (winning-l-r-diagonal? 
-  (sorted-map :0 "X", :1 "", :2 "", :3 "", :4 "X", :5 "", :6 "", :7 "", :8 "X"))))

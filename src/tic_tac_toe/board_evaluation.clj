@@ -18,13 +18,10 @@
   (separate-lines board))
 
 (defn winning-column? [board]
-  (separate-lines (select-keys board (columns) )))
+  (separate-lines (select-keys board (columns))))
 
-(defn winning-l-r-diagonal? [board]
-  (winning-line? (vals (select-keys board (l-r-diagonal)))))
-
-(defn winning-r-l-diagonal? [board]
-  (winning-line? (vals (select-keys board (r-l-diagonal)))))
+(defn winning-diagonal? [board spaces]
+  (winning-line? (vals (select-keys board (spaces)))))
 
 (defn is-tie? [board]
   (let [marker-set (set (vals board))]
@@ -33,6 +30,8 @@
         true)))
 
 (defn is-win? [board]
-  (or (evaluate-lines (winning-row? board)) (evaluate-lines (winning-column? board)) (winning-l-r-diagonal? board) (winning-r-l-diagonal? board)))
-
+  (or (evaluate-lines (winning-row? board)) 
+      (evaluate-lines (winning-column? board)) 
+      (winning-diagonal? board l-r-diagonal) 
+      (winning-diagonal? board r-l-diagonal)))
 
