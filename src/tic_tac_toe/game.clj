@@ -32,13 +32,7 @@
 (defn human-turn [board marker]
   (print-and-format (place-human-marker board marker)))
 
-(defn game-loop [board marker]
-  (let [marked-board (human-turn board marker)]
-   (cond 
-     (or (is-tie? marked-board) (is-win? marked-board)) (println "Game Over.")
-     :else (game-loop marked-board (switch-marker marker)))))
-
-(defn game-loop-human-computer  [board marker]
+(defn game-loop  [board marker]
   (cond 
     (is-tie? board) (println "Game Over - Tie.")
     (is-win? board) (println "Game Over - Computer Wins.")
@@ -47,4 +41,4 @@
    (cond 
      (is-win? marked-board) (println "Game Over - Huamn Wins.")
      (is-tie? marked-board) (println "Game Over - Tie.")
-     :else  (do (game-loop-human-computer (computer-turn marked-board "O") "O"))))))
+     :else  (do (game-loop (computer-turn marked-board "O") "O"))))))
