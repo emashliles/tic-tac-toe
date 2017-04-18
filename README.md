@@ -4,8 +4,8 @@ Tic Tac Toe in Clojure.
 
 ## Pre-requisites
 
-+ Java
-+ Leinigen
++ Java 8
++ Leinigen v2.7.1
 
 ## Test
 
