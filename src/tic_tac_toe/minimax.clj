@@ -1,9 +1,9 @@
 (ns tic-tac-toe.minimax 
   (:require [tic-tac-toe.board :refer :all]
-            [tic-tac-toe.board-evaluation :refer :all]))
+            [tic-tac-toe.board-evaluation :refer :all]
+            [tic-tac-toe.markers :refer :all]))
 
 (declare minimax-body)
-(declare switch-marker-mm)
 (declare best-score-vec)
 
 (defn calculate-score [player board max-player min-player]
@@ -11,12 +11,7 @@
    (and (is-win? board) (= player max-player)) 10
    (and (is-win? board) (= player min-player)) -10
    (is-tie? board ) 0
-   :else (best-score-vec (zipmap (available-spaces board) (map #(calculate-score (switch-marker-mm player) (place-marker % (switch-marker-mm player) board)  max-player min-player) (available-spaces board))) player max-player min-player)))
-
-(defn switch-marker-mm [marker] 
-  (if (= marker "X")
-   "O"
-   "X" ))
+   :else (best-score-vec (zipmap (available-spaces board) (map #(calculate-score (switch-marker player) (place-marker % (switch-marker player) board)  max-player min-player) (available-spaces board))) player max-player min-player)))
 
 (defn best-score-vec [scores player max-player min-player]
 (cond 
@@ -34,6 +29,6 @@
 
 (defn minimax [board current-player]
   (let [moves (available-spaces board)]
-  (let [scores (zipmap moves  (map #(calculate-score current-player (place-marker % current-player board )  current-player (switch-marker-mm current-player)) moves) )] 
-    (best-score scores current-player current-player (switch-marker-mm current-player)))))     
+  (let [scores (zipmap moves  (map #(calculate-score current-player (place-marker % current-player board )  current-player (switch-marker current-player)) moves) )] 
+    (best-score scores current-player current-player (switch-marker current-player)))))     
 
