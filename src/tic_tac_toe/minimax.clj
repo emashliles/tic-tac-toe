@@ -19,12 +19,14 @@
    "X" ))
 
 (defn best-score-vec [scores player max-player min-player]
-(cond (= player max-player) (val (apply max-key val scores))
-      (= player min-player)  (val (apply min-key val scores)) ))
+(cond 
+  (= player max-player) (val (apply max-key val scores))
+  (= player min-player)  (val (apply min-key val scores)) ))
 
 (defn best-score [scores player max-player min-player]
-(cond (= player max-player)  (key (apply max-key val scores) )
-      (= player min-player) (key (apply min-key val scores) )))
+(cond 
+  (= player max-player) (key (apply max-key val scores) )
+  (= player min-player) (key (apply min-key val scores) )))
 
 (defn minimax-body [board current-player max-player min-player]
 (let [scores (zipmap (map #(calculate-score current-player board max-player min-player) (available-spaces board)) (available-spaces board) ) ]

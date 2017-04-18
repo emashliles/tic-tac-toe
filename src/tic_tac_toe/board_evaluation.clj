@@ -6,9 +6,10 @@
 
 (defn- winning-line? [source-line]
   (let [line (into #{} source-line)]
-   (cond (contains? line  "") false
-         (= 1 (count line)) true
-         :else false)))
+   (cond
+     (contains? line  "") false
+     (= 1 (count line)) true
+     :else false)))
 
 (defn- evaluate-lines [lines] (some winning-line? lines))
 
