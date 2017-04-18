@@ -26,3 +26,5 @@
 (defn format-board [board]
   (add-separators (apply str (create-space-numbers-from-keywords board))))
 
+(defn print-and-format [board]
+  (print-board (format-board board)) board)

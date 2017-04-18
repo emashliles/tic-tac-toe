@@ -14,10 +14,7 @@
 
 (defn start [] 
   (let [board (create-board)] 
-   (print-board (format-board board)) board))
-
-(defn print-and-format [board]
-  (print-board (format-board board)) board)
+   (print-and-format board) board))
 
 (defn space-already-selected [board marker]
   (println "Space already selected.")
@@ -26,10 +23,10 @@
 (defn place-human-marker [board marker]
 (let [selection (keyword (get-human-selection))]
    (cond (= "O" (get board selection)) (space-already-selected board marker)
-         :else (place-marker selection  marker board ))))
+         :else (place-marker selection marker board))))
 
 (defn computer-turn [board marker]
-  (print-and-format (place-marker  (minimax board marker ) marker board )))
+  (print-and-format (place-marker (minimax board marker) marker board)))
 
 (defn human-turn [board marker]
   (print-and-format (place-human-marker board marker)))
@@ -46,4 +43,4 @@
   (let  [marked-board  (human-turn board "X")]
    (cond (is-win? marked-board) (println "Game Over - Huamn Wins.")
          (is-tie? marked-board) (println "Game Over - Tie.")
-         :else  (do (game-loop-human-computer (computer-turn marked-board "O") "O" ))))))
+         :else  (do (game-loop-human-computer (computer-turn marked-board "O") "O"))))))
