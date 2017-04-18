@@ -3,10 +3,10 @@
             [tic-tac-toe.game :refer :all]
             [tic-tac-toe.board :refer :all]))
 
-(deftest start-game (is (= "\u001b[2J\u001B[0;0f| 1 || 2 || 3 |\n---------------\n| 4 || 5 || 6 |\n---------------\n| 7 || 8 || 9 |\n" (with-out-str (start)))))
+(deftest print-new-board (is (= "\u001b[2J\u001B[0;0f| 1 || 2 || 3 |\n---------------\n| 4 || 5 || 6 |\n---------------\n| 7 || 8 || 9 |\n" (with-out-str (start-game)))))
 
 (deftest start-game-returns-board (is 
-  (with-out-str (= {:0 "", :1 "", :2 "", :3 "", :4 "", :5 "", :6 "", :7 "", :8 ""}  (start)))))
+  (with-out-str (= {:0 "", :1 "", :2 "", :3 "", :4 "", :5 "", :6 "", :7 "", :8 ""}  (start-game)))))
 
 (deftest make-human-move (is 
   (.contains (with-out-str (with-in-str "2" (human-turn (create-board) "X" ))) "| 1 || X || 3 |\n" )))

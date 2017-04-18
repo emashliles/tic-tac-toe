@@ -12,7 +12,7 @@
    "O"
    "X" ))
 
-(defn start [] 
+(defn start-game [] 
   (let [board (create-board)] 
    (print-and-format board) board))
 
@@ -37,7 +37,7 @@
     (is-tie? board) (println "Game Over - Tie.")
     (is-win? board) (println "Game Over - Computer Wins.")
     :else
-  (let  [marked-board  (human-turn board "X")]
+  (let [marked-board (human-turn board "X")]
    (cond 
      (is-win? marked-board) (println "Game Over - Huamn Wins.")
      (is-tie? marked-board) (println "Game Over - Tie.")
