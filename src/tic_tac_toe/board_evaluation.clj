@@ -1,5 +1,9 @@
 (ns tic-tac-toe.board-evaluation)
 
+(defn l-r-diagonal [] [:0 :4 :8])
+(defn r-l-diagonal [] [:2 :4 :6])
+(defn columns [] [:0 :3 :6 :1 :4 :7 :2 :5 :8])
+
 (defn winning-line? [source-line]
   (let [line (into #{} source-line)]
    (cond (contains? line  "") false
@@ -14,13 +18,13 @@
   (separate-lines board))
 
 (defn winning-column? [board]
-  (separate-lines (select-keys board [:0 :3 :6 :1 :4 :7 :2 :5 :8])))
+  (separate-lines (select-keys board (columns) )))
 
 (defn winning-l-r-diagonal? [board]
-  (winning-line? (vals (select-keys board [:0 :4 :8]))))
+  (winning-line? (vals (select-keys board (l-r-diagonal)))))
 
 (defn winning-r-l-diagonal? [board]
-  (winning-line? (vals (select-keys board [:2 :4 :6]))))
+  (winning-line? (vals (select-keys board (r-l-diagonal)))))
 
 (defn is-tie? [board]
   (let [marker-set (set (vals board))]
