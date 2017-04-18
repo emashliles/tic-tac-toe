@@ -11,7 +11,7 @@
    (and (is-win? board) (= player max-player)) 10
    (and (is-win? board) (= player min-player)) -10
    (is-tie? board ) 0
-   :else (best-score-vec (zipmap (available-spaces board)  (map #(calculate-score (switch-marker-mm player) (place-marker % (switch-marker-mm player) board)  max-player min-player) (available-spaces board))) player max-player min-player)))
+   :else (best-score-vec (zipmap (available-spaces board) (map #(calculate-score (switch-marker-mm player) (place-marker % (switch-marker-mm player) board)  max-player min-player) (available-spaces board))) player max-player min-player)))
 
 (defn switch-marker-mm [marker] 
   (if (= marker "X")

@@ -19,7 +19,9 @@
   (str (subs source 0 index) insert (subs source index)))
 
 (defn add-separators [board] 
- (insert-separator (insert-separator board (line-separator) (first-separator-index)) (line-separator) (second-separator-index)))
+  (insert-separator
+    (insert-separator board (line-separator) (first-separator-index))
+      (line-separator) (second-separator-index)))
 
 (defn format-board [board]
   (add-separators (apply str (create-space-numbers-from-keywords board))))
