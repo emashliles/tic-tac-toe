@@ -13,4 +13,5 @@
   (.contains (with-out-str (with-in-str "8" (game-loop  (sorted-map :0 "X", :1 "O", :2 "X", :3 "X", :4 "O", :5 "X", :6 "O", :7 "", :8 "O") "X"))) "Game Over" )))
 
 (deftest space-already-selected-is-invalid (is 
-  (.contains (with-out-str (with-in-str "7\n8\n" (game-loop  (sorted-map :0 "X", :1 "O", :2 "X", :3 "X", :4 "O", :5 "X", :6 "O", :7 "", :8 "O") "X"))) "Space already selected.")))
+  (.contains (with-out-str (with-in-str "7\n1\n" (game-loop  (sorted-map :0 "", :1 "O", :2 "", :3 "X", :4 "O", :5 "X", :6 "O", :7 "X", :8 "O") "X"))) "Space already selected.")))
+
