@@ -12,14 +12,10 @@
   (let [board (create-board)] 
    (print-and-format board) board))
 
-(defn space-already-selected [board marker]
-  (println "Space already selected.")
-  (place-human-marker board marker))
-
 (defn place-human-marker [board marker]
 (let [selection (keyword (get-human-selection))]
    (cond 
-     (not= (empty-space) (get board selection)) (space-already-selected board marker)
+     (not= (empty-space) (get board selection)) (do (print-invalid-selection-message "Space already selected.") (place-human-marker board marker))
      :else (place-marker selection marker board))))
 
 (defn computer-turn [board marker]
