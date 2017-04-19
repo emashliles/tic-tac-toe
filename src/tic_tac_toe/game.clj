@@ -28,9 +28,6 @@
 (defn human-turn [board marker]
   (print-and-format (place-human-marker board marker)))
 
-(defn print-game-over-message [message]
-  (println (str "Game Over - " message )))
-
 (defn game-loop  [board marker]
   (cond 
     (is-tie? board) (print-game-over-message "Tie.")
