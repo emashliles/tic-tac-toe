@@ -19,7 +19,7 @@
 (defn place-human-marker [board marker]
 (let [selection (keyword (get-human-selection))]
    (cond 
-     (or (= "O" (get board selection)) (= "X" (get board selection)) ) (space-already-selected board marker)
+     (not= (empty-space) (get board selection)) (space-already-selected board marker)
      :else (place-marker selection marker board))))
 
 (defn computer-turn [board marker]
