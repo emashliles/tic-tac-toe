@@ -5,6 +5,10 @@
 
 (declare minimax-body)
 (declare best-score-vec)
+(declare calculate-score)
+
+(defn calculate-score-memo [player board max-player min-player] 
+(memoize (calculate-score player board max-player min-player)))
 
 (defn calculate-score [player board max-player min-player]
   (cond 
@@ -24,7 +28,7 @@
   (= player min-player) (key (apply min-key val scores) )))
 
 (defn minimax-body [board current-player max-player min-player]
-(let [scores (zipmap (map #(calculate-score current-player board max-player min-player) (available-spaces board)) (available-spaces board) ) ]
+(let [scores (zipmap (map #(calculate-score-memo current-player board max-player min-player) (available-spaces board)) (available-spaces board) ) ]
 (best-score scores current-player  max-player min-player )))
 
 (defn minimax [board current-player]
