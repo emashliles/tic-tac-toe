@@ -13,7 +13,7 @@
 (defn place-human-marker [board marker]
 (let [selection (keyword (get-human-selection))]
    (cond 
-     (not= (empty-space) (get board selection)) (do (invalid-selection-message "Space already selected.")
+     (not= (empty-space) (get board selection)) (do (invalid-selection "Space already selected.")
                                                     (place-human-marker board marker))
      :else (place-marker selection marker board))))
 
@@ -25,12 +25,12 @@
 
 (defn game-loop [board marker]
   (cond 
-    (is-tie? board) (game-over-message "Tie.")
-    (is-win? board) (game-over-message "Computer Wins.")
+    (is-tie? board) (game-over "Tie.")
+    (is-win? board) (game-over "Computer Wins.")
     :else
   (let [marked-board (human-turn board (human-marker))]
    (cond 
-     (is-win? marked-board) (game-over-message "Huaman Wins.")
-     (is-tie? marked-board) (game-over-message "Tie.")
+     (is-win? marked-board) (game-over "Huaman Wins.")
+     (is-tie? marked-board) (game-over "Tie.")
      :else  (do (game-loop (computer-turn marked-board (computer-marker)) (computer-marker)))))))
 

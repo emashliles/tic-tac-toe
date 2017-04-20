@@ -3,10 +3,10 @@
 (defn- print-message [message]
   (println message))
 
-(defn game-over-message [message]
+(defn game-over [message]
   (print-message (str "Game Over - " message )))
 
-(defn invalid-selection-message [message]
+(defn invalid-selection [message]
   (print-message (str "Invalid selection. " message)))
 
 (defn- is-valid? [selection]
@@ -16,5 +16,5 @@
   (let [selection (read-line)]
    (cond 
      (= true (is-valid? selection)) (str (- (read-string selection) 1 ))
-     (= false (is-valid? selection)) (do (invalid-selection-message "Please enter a number between 1 and 9") (get-human-selection)))))
+     (= false (is-valid? selection)) (do (invalid-selection "Please enter a number between 1 and 9") (get-human-selection)))))
 
