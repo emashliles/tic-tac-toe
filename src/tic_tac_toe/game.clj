@@ -30,7 +30,7 @@
     :else
   (let [marked-board (human-turn board (human-marker))]
    (cond 
-     (is-win? marked-board) (game-over-message "Huamn Wins.")
+     (is-win? marked-board) (game-over-message "Huaman Wins.")
      (is-tie? marked-board) (game-over-message "Tie.")
      :else  (do (game-loop (computer-turn marked-board (computer-marker)) (computer-marker)))))))
 
