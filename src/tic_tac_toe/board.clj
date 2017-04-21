@@ -17,5 +17,5 @@
   (assoc board space marker))
 
 (defn available-spaces [board]
- (map first (filter (comp #{ (empty-space) } last ) board )))
+  (map first (filter (comp #{ (empty-space) } last) board)))
 

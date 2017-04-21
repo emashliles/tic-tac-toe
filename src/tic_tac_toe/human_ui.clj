@@ -16,5 +16,6 @@
   (let [selection (read-line)]
    (cond 
      (= true (is-valid? selection)) (str (- (read-string selection) 1 ))
-     (= false (is-valid? selection)) (do (invalid-selection "Please enter a number between 1 and 9") (get-human-selection)))))
+     (= false (is-valid? selection)) (do (invalid-selection "Please enter a number between 1 and 9") 
+                                         (get-human-selection)))))
 
