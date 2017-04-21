@@ -11,7 +11,7 @@
    (print-and-format board) board))
 
 (defn place-human-marker [board marker]
-(let [selection (keyword (get-human-selection))]
+  (let [selection (keyword (get-human-selection))]
    (cond 
      (not= (empty-space) (get board selection)) (do (invalid-selection "Space already selected.")
                                                     (place-human-marker board marker))
